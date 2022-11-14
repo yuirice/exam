@@ -37,3 +37,9 @@ Route::get('/posts/{post}/comments/{comment}', function($post,$comment){
 Route::get('game/{id}','App\Http\Controllers\SiteController@play');
 
 Route::get('admin','App\Http\Controllers\SiteController@dashboard');
+
+Route::get('paint',function(){
+    return view('paint');
+});
+
+Route::get('pics','App\Http\Controllers\SiteController@gallery');

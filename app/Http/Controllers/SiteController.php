@@ -22,4 +22,8 @@ class SiteController extends Controller
     public function dashboard(){
         return view('dashboard');
     }
+
+    public function gallery(){
+        return view('gallery');
+    }
 }
