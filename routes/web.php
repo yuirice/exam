@@ -27,3 +27,13 @@ Route::get('/users','App\Http\Controllers\UserController@show2');
 Route::get('/posts/{post}/comments/{comment}', function($post,$comment){
     return "posts $post , comments $comment";
 });
+
+// Route::get('/game',function(){
+//     return view('game1');
+// });
+
+// Route::view('/game2','game2');
+
+Route::get('game/{id}','App\Http\Controllers\SiteController@play');
+
+Route::get('admin','App\Http\Controllers\SiteController@dashboard');
