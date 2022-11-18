@@ -48,6 +48,7 @@ Route::namespace('App\Http\Controllers')->group(function(){
     Route::get('game/{id}','SiteController@play');
     Route::get('admin','SiteController@dashboard');
     Route::get('/hello','SiteController@hello');
+    Route::get('/demo','SiteController@demo');
 });
 
 Route::get('paint',function(){
@@ -57,3 +58,5 @@ Route::get('paint',function(){
 Route::middleware(['auth'])->group(function(){
     
 });
+
+Route::resource('posts','App\Http\Controllers\PostController');

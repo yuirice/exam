@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>CodePen - Magnific Gallery V2</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.css'>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css'><link rel="stylesheet" href="{{ asset('gallery/style.css') }}">
+@extends('layouts.master')
 
-</head>
-<body>
-<!-- partial:index.partial.html -->
+@section('title','Gallery')
+
+@section('content')
 <div class="gallery" itemscope="" itemtype="http://schema.org/ImageGallery">
   <figure class="gallery-item horizontal" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="https://source.unsplash.com/-gS54SWrHMg/2000x1000" itemprop="contentUrl" data-size="2000x1000"><img class="lazyload lazypreload fadein" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http://www.w3.org/2000/svg'%20viewBox%3D'0%200%201000%20500'%20%2F%3E" data-src="https://source.unsplash.com/-gS54SWrHMg/1000x500" itemprop="thumbnail" alt="Image description"/></a>
     <figcaption class="gallery-caption" itemprop="caption description">Caption</figcaption>
@@ -109,10 +102,16 @@
     </div>
   </div>
 </div>
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.0.2/lazysizes.min.js'></script>
+@endsection
+
+@section('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css'><link rel="stylesheet" href="{{ asset('gallery/style.css') }}">
+@endsection
+
+@section('js')
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.0.2/lazysizes.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.js'></script><script  src="{{ asset('gallery/script.js') }}"></script>
-
-</body>
-</html>
+@endsection

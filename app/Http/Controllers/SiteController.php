@@ -26,4 +26,22 @@ class SiteController extends Controller
     public function gallery(){
         return view('gallery');
     }
+
+    public function demo(){
+        //第一種
+        //return view('test.demo')->with(['name'=>'品爵','age'=>'<b>18</b>']);
+        //第二種
+        // $data = [];
+        // $data['name'] = '品爵';
+        // $data['age'] = '<b>18</b>';
+        // return view('test.demo',$data);
+        //第三種
+        $name = '品爵';
+        $age = '<b>18</b>'; 
+        $games = ['PS5','Nintentdo Switch','XBox'];
+        return view('test.demo',compact('name','age','games'));
+
+        
+
+    }
 }
