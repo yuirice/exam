@@ -9,7 +9,7 @@ class PostController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except('index');
+        //$this->middleware('auth')->except('index');
     }
 
     /**
@@ -40,7 +40,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
+        //返回到index頁面
+        return redirect(url('posts/' . 1));
     }
 
     /**

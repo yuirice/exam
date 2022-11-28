@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,10 +54,19 @@ Route::namespace('App\Http\Controllers')->group(function(){
 
 Route::get('paint',function(){
     return view('paint');
-});
+})->name('mypaint');
+
+//Route::view('paint','paint');
 
 Route::middleware(['auth'])->group(function(){
     
 });
 
 Route::resource('posts','App\Http\Controllers\PostController');
+
+Route::get('/url',function(){
+    //return url('paint');
+    //return route('mypaint');
+    //return action([SiteController::class,'demo']);
+    return url()->current(); 
+});

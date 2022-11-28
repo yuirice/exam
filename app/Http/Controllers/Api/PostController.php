@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
     }
 
     /**
@@ -60,5 +60,21 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function doAny(Request $request){
+        //return $request->file('pic')->store(storage_path('app/public/pic'));
+        // 取得完整檔名
+        $filenameWithExt = $request->file('pic')->getClientOriginalName();
+        // 只取檔名
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        // 只取副檔名
+        $extension = $request->file('pic')->getClientOriginalExtension();
+        // 生成新檔名
+        $fileNameToStore = $filename.'_'.time().'.'.$extension;
+        // 儲存圖片
+        $path = $request->file('pic')->storeAs('public/storage/pic',$fileNameToStore);
+        
+        return $path;
     }
 }

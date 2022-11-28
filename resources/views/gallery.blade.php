@@ -3,8 +3,14 @@
 @section('title','Gallery')
 
 @section('content')
+
 <div class="gallery" itemscope="" itemtype="http://schema.org/ImageGallery">
-  <figure class="gallery-item horizontal" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="https://source.unsplash.com/-gS54SWrHMg/2000x1000" itemprop="contentUrl" data-size="2000x1000"><img class="lazyload lazypreload fadein" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http://www.w3.org/2000/svg'%20viewBox%3D'0%200%201000%20500'%20%2F%3E" data-src="https://source.unsplash.com/-gS54SWrHMg/1000x500" itemprop="thumbnail" alt="Image description"/></a>
+  @foreach ($images as $item)
+  <figure class="gallery-item horizontal" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="{{ $item['href'] }}" itemprop="contentUrl" data-size="2000x1000"><img class="lazyload lazypreload fadein" src="{{ $item['src'] }}" data-src="{{ $item['src'] }}" itemprop="thumbnail" alt="Image description"/></a>
+    <figcaption class="gallery-caption" itemprop="caption description">Caption</figcaption>
+  </figure>
+  @endforeach
+  {{-- <figure class="gallery-item horizontal" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="https://source.unsplash.com/-gS54SWrHMg/2000x1000" itemprop="contentUrl" data-size="2000x1000"><img class="lazyload lazypreload fadein" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http://www.w3.org/2000/svg'%20viewBox%3D'0%200%201000%20500'%20%2F%3E" data-src="https://source.unsplash.com/-gS54SWrHMg/1000x500" itemprop="thumbnail" alt="Image description"/></a>
     <figcaption class="gallery-caption" itemprop="caption description">Caption</figcaption>
   </figure>
   <figure class="gallery-item vertical" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="https://source.unsplash.com/AU1rKyKPJco/1000x2000" itemprop="contentUrl" data-size="1000x2000"><img class="lazyload lazypreload fadein" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http://www.w3.org/2000/svg'%20viewBox%3D'0%200%20500%201000'%20%2F%3E" data-src="https://source.unsplash.com/AU1rKyKPJco/500x1000" itemprop="thumbnail" alt="Image description"/></a>
@@ -51,8 +57,9 @@
   </figure>
   <figure class="gallery-item" itemprop="associatedMedia" itemscope="" itemtype="http://schema.org/ImageObject"><a href="https://source.unsplash.com/c_Tc9ZELeYw/1000x1000" itemprop="contentUrl" data-size="1000x1000"><img class="lazyload lazypreload fadein" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http://www.w3.org/2000/svg'%20viewBox%3D'0%200%20500%20500'%20%2F%3E" data-src="https://source.unsplash.com/c_Tc9ZELeYw/500x500" itemprop="thumbnail" alt="Image description"/></a>
     <figcaption class="gallery-caption" itemprop="caption description">Caption</figcaption>
-  </figure>
+  </figure> --}}
 </div>
+
 <!-- Root element of PhotoSwipe. Must have class pswp.-->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
   <!--
@@ -102,6 +109,8 @@
     </div>
   </div>
 </div>
+
+{{ $global * 3}}
 @endsection
 
 @section('css')
@@ -110,7 +119,7 @@
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css'><link rel="stylesheet" href="{{ asset('gallery/style.css') }}">
 @endsection
 
-@section('js')
+@section('script')
 <script src='https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.0.2/lazysizes.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.js'></script><script  src="{{ asset('gallery/script.js') }}"></script>
