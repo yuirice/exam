@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -29,7 +31,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $modes = ['recommend'=>'編輯精選','season'=>'當季商品','cp'=>'超值商品'];
+        $mode = 'cp';
+        return view('posts.create',compact('modes','mode'));
     }
 
     /**
@@ -38,9 +42,36 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        return $request->all();
+       // dd($request->file('pic'));
+        //return $request->all();
+        //驗證示範
+        // $validator = Validator::make($request->all(),[
+        //     'title' => 'required | max:10',
+        //     'desc' => 'required' 
+        // ]);
+
+        // if($validator->fails()){
+        //     return $validator;
+        // }
+
+        if ($request->hasFile('pic')) {
+            $file = $request->file('pic');  //獲取UploadFile例項
+            if ( $file->isValid()) { //判斷檔案是否有效
+                //$filename = $file->getClientOriginalName(); //檔案原名稱
+                $extension = $file->getClientOriginalExtension(); //副檔名
+                $fileName = time() . "." . $extension;    //重新命名
+                //$data['pic'] = $filename;
+                $path = $file->storeAs('public/pic',$fileName); //儲存至指定目錄
+            }
+        }
+
+
+        return 'ok';
+
+
+        //return $request->all();
         //返回到index頁面
         return redirect(url('posts/' . 1));
     }

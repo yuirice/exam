@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
@@ -63,7 +63,6 @@ class PostController extends Controller
     }
 
     public function doAny(Request $request){
-        //return $request->file('pic')->store(storage_path('app/public/pic'));
         // 取得完整檔名
         $filenameWithExt = $request->file('pic')->getClientOriginalName();
         // 只取檔名
