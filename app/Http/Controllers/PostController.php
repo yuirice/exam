@@ -44,6 +44,7 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
+        $data = $request->all();
        // dd($request->file('pic'));
         //return $request->all();
         //驗證示範
@@ -62,13 +63,13 @@ class PostController extends Controller
                 //$filename = $file->getClientOriginalName(); //檔案原名稱
                 $extension = $file->getClientOriginalExtension(); //副檔名
                 $fileName = time() . "." . $extension;    //重新命名
-                //$data['pic'] = $filename;
+                $data['pic'] = $filename;
                 $path = $file->storeAs('public/pic',$fileName); //儲存至指定目錄
             }
         }
 
 
-        return 'ok';
+        return $data;
 
 
         //return $request->all();
