@@ -70,3 +70,21 @@ Route::get('/url',function(){
     //return action([SiteController::class,'demo']);
     return url()->current(); 
 });
+
+//字串轉陣列
+Route::get('/toarray',function(){
+    $str = '1,2,3';
+    $ary = explode(',',$str);
+    dd($ary);
+});
+
+//陣列轉字串
+Route::get('/tostring',function(){
+    $ary = [1,2,3];
+    $str = implode(',',$ary);
+    dd($str);
+});
+
+Route::get('/config',function(){
+    dd(config('database.default'));
+});

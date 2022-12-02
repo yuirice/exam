@@ -63,7 +63,7 @@ return [
     'numeric'              => ':attribute 必須是數字',
     'present'              => ':attribute 欄位必須是存在的',
     'regex'                => ':attribute 格式無效',
-    'required'             => ':attribute 欄位是必須的',
+    'required'             => ':attribute 欄位必須要填寫',
     'required_if'          => ':attribute 欄位是必須的當 :other 欄位是 :value.',
     'required_unless'      => ':attribute 欄位是必須的除非 :other 為這些 :values.',
     'required_with'        => ':attribute 欄位是必須的當 :values 是存在的',
