@@ -63,19 +63,25 @@ class ArticleController extends Controller
         //
     }
 
-    //查詢創建於 2022/12/13 00:00:00 之後，enabled 為 true 的資料，按照 created_at 從新到舊排序，回傳第一筆資料的 subject 欄位內容
+    //查詢所有資料，只取 id , subject 以及 content 這三個欄位
+    public function querySelect()
+    {
+
+    }
+
+    //查詢 enabled_at 於 2022/12/13 00:00:00 之後，enabled 為 true 的資料，按照 created_at 從新到舊排序，回傳第一筆資料的 subject 欄位內容
     public function querySpecific()
     {
 
     }
 
-    //查詢創建於 2022/12/10 00:00:00 之後，enabled 為 true 的資料，按照 created_at 從新到舊排序，回傳第2~4筆資料
+    //查詢 enabled_at 於 2022/12/10 00:00:00 之後，enabled 為 true 的資料，按照 created_at 從新到舊排序，回傳第2~4筆資料
     public function queryPagination()
     {
 
     }
 
-    //查詢創建日期介於 2022/12/10 00:00:00 和 2022/12/15 23:59:59 之間，sort 位於 $min 到 $max 之間的資料並回傳
+    //查詢 enabled_at 介於 2022/12/10 00:00:00 和 2022/12/15 23:59:59 之間，sort 位於 $min 到 $max 之間的資料並回傳
     public function queryRange($min,$max)
     {
 
