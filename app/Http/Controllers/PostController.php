@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Validator;
@@ -68,13 +69,13 @@ class PostController extends Controller
             }
         }
 
-
-        return $data;
+        return '所有文章';
+        //return $data;
 
 
         //return $request->all();
         //返回到index頁面
-        return redirect(url('posts/' . 1));
+        //return redirect(url('posts/' . 1));
     }
 
     /**
@@ -85,7 +86,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        return "文章 $id";
+        $post = Post::find($id);
+        return $post;
     }
 
     /**
@@ -108,7 +110,8 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        return redirect('posts');
     }
 
     /**
@@ -119,6 +122,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect('posts');
     }
 }

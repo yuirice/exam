@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Article;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ArticleSeeder extends Seeder
 {
@@ -14,6 +15,8 @@ class ArticleSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Article::truncate();
+
+        Article::factory()->times(100)->create();
     }
 }

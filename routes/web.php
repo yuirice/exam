@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Cgy;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
 
@@ -49,7 +50,7 @@ Route::namespace('App\Http\Controllers')->group(function(){
     Route::get('game/{id}','SiteController@play');
     Route::get('admin','SiteController@dashboard');
     Route::get('/hello','SiteController@hello');
-    Route::get('/demo','SiteController@demo');
+    Route::get('/demo','SiteController@demo')->name('mydemo');
 });
 
 Route::get('paint',function(){
@@ -63,6 +64,8 @@ Route::middleware(['auth'])->group(function(){
 });
 
 Route::resource('posts','App\Http\Controllers\PostController');
+Route::resource('cgies','App\Http\Controllers\CgyController');
+Route::resource('articles','App\Http\Controllers\ArticleController');
 
 Route::get('/url',function(){
     //return url('paint');
@@ -88,3 +91,16 @@ Route::get('/tostring',function(){
 Route::get('/config',function(){
     dd(config('database.default'));
 });
+
+Route::get('/newcgy',function(){
+    // $cgy = new Cgy;
+    // $cgy->title = '我的英雄學院';
+    // $cgy->desc = '我的英雄學院劇場版';
+    // $cgy->enabled = true;
+
+    $cgy = new Cgy(['title'=>'我的英雄學院2','desc'=>'我的英雄學院劇場版2','enabled'=>true]);
+    $cgy->save();
+});
+
+
+
