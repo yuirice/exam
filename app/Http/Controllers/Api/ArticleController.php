@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Cgy;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CgyController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,17 +13,6 @@ class CgyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $cgies = Cgy::where('id','>',101)->get();
-        return $cgies;
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
     {
         //
     }
@@ -46,20 +35,6 @@ class CgyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //$cgy = Cgy::find($id);
-        $cgy = Cgy::orderBy('created_at','desc')->where('id',$id)->first();
-        dd($cgy);
-        return $cgy;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }
