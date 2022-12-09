@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Models\Article;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 //請完成下方所有方法的實作，並撰寫對應的路由，用 Postman 來進行測試
 class ArticleController extends Controller
@@ -15,7 +16,10 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+            $articles = Article::get();
+             $articles = Article::orderBy('sort','asc')->get();
+            return $articles;
+
     }
 
     /**
@@ -26,7 +30,25 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $validator = Validator::make($request->all(),[
+            'subject' => 'required | max:100',
+            'content' => 'required',
+            'enabled_at' => 'required',
+            'sort' => 'required',
+            'pic' => 'required',
+            'enabled' => 'required',
+            'cgy_id' => 'required'
+
+
+            // $table->text('content');
+            // $table->timestamp('enabled_at');
+            // $table->integer('sort')->default(0);
+            // $table->string('pic',255)->nullable();
+            // $table->boolean('enabled')->default(true);
+            // $table->bigInteger('cgy_id');
+            // $table->timestamps();
+         ]);
+
     }
 
     /**
@@ -37,7 +59,8 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+           $article= Article::find($id);
+           return $article;
     }
 
     /**
@@ -66,7 +89,9 @@ class ArticleController extends Controller
     //查詢所有資料，只取 id , subject 以及 content 這三個欄位
     public function querySelect()
     {
-
+            $articles = Article::get();
+            $articles = Article::select(['id','suject','content'])->get();
+            return $articles;
     }
 
     //查詢 enabled_at 於 2022/12/13 00:00:00 之後，enabled 為 true 的資料，按照 created_at 從新到舊排序，回傳第一筆資料的 subject 欄位內容
